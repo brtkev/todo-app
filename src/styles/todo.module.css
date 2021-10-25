@@ -2,5 +2,6 @@
 .container{
     height: 100%;
     width: 100%;
-    background: #ff2626
+    outline: 1px solid black;
 }
+
