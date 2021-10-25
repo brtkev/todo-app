@@ -1,11 +1,16 @@
-import styles from './App.module.css'
+import styles from './styles/App.module.css'
+import useDocTitle from './hooks/useDocTitle';
+import Todo from './components/todo';
 
-const App = () => {
+export default function App(){
+	useDocTitle("todo app");
+
 	return (
-		<h1 className={styles.container} >Hello World!</h1>
+		<div className={styles.container} >
+			
+			<Todo />
+		</div>
 	);
 }
 
 
-
-export default App;

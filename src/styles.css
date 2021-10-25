@@ -4,11 +4,14 @@
 }
 
 body{
-  background: #bbb;
+  background: #fefefe;
   /*background-image: url('../public/background.png');*/
   display: grid;
   place-content: center;
   min-height: 100vh;
   margin: 0;
+
+
+  --backgroundColor : #ff9d2c
 }
 
