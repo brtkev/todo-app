@@ -6,6 +6,8 @@
     border-radius: 5px 5px 0px 0px;
     padding: 0;
     margin-bottom: 5vw;
+
+    --titleBoxHeight: 5vw;
 }
 
 
@@ -13,7 +15,7 @@
     background: var(--taskCardColor);
     position: relative;
     padding: 0 5vw;
-    height: 5vw;
+    height: var(--titleBoxHeight);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,24 +26,47 @@
     font-weight: 200;
 }
 
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .button{
+    color: #eee;
     outline: none;
-    background: var(--taskButtonColor);
+    background: var(--backgroundColor);
     border: 1px solid #444;
 
     border-radius: 10px;
     width: calc(1.5rem + 1vw);
     height: calc(1.5rem + 1vw);
     margin: 0 calc(.5rem + 1.5vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:active{
+        transform: scale(.95);        
+    }
+
+}
+
+.button img{
+    object-fit: cover;
+    width: 70%;
+    filter: invert(100%);
 }
 
 .description{
     position: absolute;
+    width: 100%;
     padding: 2.5vw 5vw;
-    background: var(--taskCardColor);
     background: var(--taskDescriptionColor);
+    color: #eee;
     opacity: 0;
-    transform: translateY(-30%);
+    transform: translateY(calc(var(--titleBoxHeight) * -1));
     
     transition: opacity .25s ease-in-out, transform .25s ease-in-out;
     pointer-events: none;
