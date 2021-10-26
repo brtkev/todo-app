@@ -1,8 +1,7 @@
 .container {
   color: #111;
   background: var(--backgroundColor);
-  min-width: 100%;
-  max-width: 100%;
+  width: 100%;
   min-height: 100vh;
 
   padding: 10%;
