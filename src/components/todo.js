@@ -18,19 +18,23 @@ export default function Todo(){
     }, [])
     
     const deleteTask = ( ev ) => {
-        //delete from backend
-        let _id = ev.target.closest('[_id]').attributes._id.value; 
-        example = example.filter((item) =>  item._id !== _id);
-
-        //fetch backend
-    
-        //update frontend
-        setTasks(example);
+        deleteFromBackend(ev.target.closest('[_id]').attributes._id.value )
+        setTasks(fetchTasks());
     }
-    
+
+    const editTask = (ev) => {
+        let id = ev.target.closest('[_id]').attributes._id.value;
+        alert(`not implemented, trying to edit: ${id}`);
+        return
+        //open edit window
+        edit = 'implement editor'
+        updateTaskFromBacked(id, edit);
+        setTasks(fetchTasks());        
+    }
+
     const taskComponents = tasks.map((item, index ) => {
         let i = (tasks.length - index) * 2;
-        return <Task index={i} key={item._id} {...item} deleteTask={deleteTask} />
+        return <Task index={i} key={item._id} {...item} onDelete={deleteTask} onEdit={editTask} />
     })
 
 
@@ -46,3 +50,13 @@ const fetchTasks = () => {
     return example;
 }
 
+const deleteFromBackend = (id) => {
+    //should delete from backend
+    example = example.filter((item) =>  item._id !== id);
+}
+
+const updateTaskFromBacked = (id, edit) => {
+    //should update backend
+    index = example.findIndex( (item) => item._id === id);
+    example[index] = edit;
+}

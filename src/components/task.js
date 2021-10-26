@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 let clearDescriptionsWasAdded = false;
 
 export default function Task(props) {
-    const {index = 1, description, title, deleteTask, _id} = props;
+    const {index = 1, description, title, onDelete, onEdit, _id} = props;
     useEffect(()=> {
         if(!clearDescriptionsWasAdded){
             document.addEventListener('click', clearDescriptions)
@@ -21,9 +21,10 @@ export default function Task(props) {
             
             <div className={styles.buttonContainer} >
                 <TaskButton 
+                    onClick={onEdit}
                     src={pencil} alt="pencil" />
                 <TaskButton 
-                    onClick={deleteTask}
+                    onClick={onDelete}
                     src={cancel} alt="cancel" />
                 <TaskButton 
                     onClick={toggleDescription} dropdown-description-button="true"
