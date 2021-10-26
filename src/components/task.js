@@ -1,10 +1,11 @@
 import styles from '../styles/task.module.css'
 import { downArrow, cancel, pencil } from './images';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 let clearDescriptionsWasAdded = false;
 
-export default function Task({index = 1, description, title, startDate, endDate}) {
+export default function Task(props) {
+    const {index = 1, description, title, deleteTask, _id} = props;
     useEffect(()=> {
         if(!clearDescriptionsWasAdded){
             document.addEventListener('click', clearDescriptions)
@@ -14,7 +15,7 @@ export default function Task({index = 1, description, title, startDate, endDate}
     }, [index])   
 
   return(
-    <div className={styles.container}>
+    <div className={styles.container} _id={_id} >
         <div className={styles.titleBox} style={{zIndex: index}} >
             <h3 className={styles.title} >{title}</h3>
             
@@ -22,14 +23,16 @@ export default function Task({index = 1, description, title, startDate, endDate}
                 <TaskButton 
                     src={pencil} alt="pencil" />
                 <TaskButton 
+                    onClick={deleteTask}
                     src={cancel} alt="cancel" />
                 <TaskButton 
                     onClick={toggleDescription} dropdown-description-button="true"
                     src={downArrow} alt="downArrow" />
             </div>
         </div>
-        <div className={styles.description} style={{zIndex: index-1}} >{description ? description : "You could add a description about this task "}</div>
-        
+        <div className={styles.description} style={{zIndex: index-1}} >
+            {description ? description : "You could add a description about this task "}
+        </div>
     </div>
     );
 };
@@ -59,11 +62,5 @@ const toggleDescription = (ev) => {
     const currentDescription = ev.target.closest(`.${styles.container}`).children[1];
     currentDescription.classList.toggle(styles.show);
     closeDescriptionsExcept(currentDescription);
-}
-
-const deleteTask = (ev) => {
-    // delete task from backend
-
-    // delete task from fronend
 }
 
