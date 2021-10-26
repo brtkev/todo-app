@@ -19,15 +19,13 @@ export default function Task({index = 1, description, title, startDate, endDate}
             <h3 className={styles.title} >{title}</h3>
             
             <div className={styles.buttonContainer} >
-                <TaskButton>
-                    <img src={pencil} alt="cancel" />
-                </TaskButton>
-                <TaskButton>
-                    <img src={cancel} alt="cancel" />
-                </TaskButton>
-                <TaskButton onClick={toggleDescription} dropdown-description-button="true" >
-                    <img src={downArrow} alt="downArrow" />
-                </TaskButton>
+                <TaskButton 
+                    src={pencil} alt="pencil" />
+                <TaskButton 
+                    src={cancel} alt="cancel" />
+                <TaskButton 
+                    onClick={toggleDescription} dropdown-description-button="true"
+                    src={downArrow} alt="downArrow" />
             </div>
         </div>
         <div className={styles.description} style={{zIndex: index-1}} >{description ? description : "You could add a description about this task "}</div>
@@ -37,8 +35,11 @@ export default function Task({index = 1, description, title, startDate, endDate}
 };
 
 const TaskButton = (props) => {
+    const {src, alt} = props 
     return(
-        <button className={styles.button} {...props} >{props.children}</button>
+        <button className={styles.button} {...props} >
+            <img src={src} alt={alt} />
+        </button>
     );
 }
 
@@ -58,5 +59,11 @@ const toggleDescription = (ev) => {
     const currentDescription = ev.target.closest(`.${styles.container}`).children[1];
     currentDescription.classList.toggle(styles.show);
     closeDescriptionsExcept(currentDescription);
+}
+
+const deleteTask = (ev) => {
+    // delete task from backend
+
+    // delete task from fronend
 }
 
