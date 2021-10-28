@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/todo.module.css';
 import Task from './task';
+import Editor from './editor';
 
 let example = [
     { title: "example1", description: "example", _id : "aksjdl1231askdj1", startDate : 1468454651},
@@ -40,7 +41,8 @@ export default function Todo(){
 
     return(
         <div className={styles.container}>
-        {taskComponents}
+            {taskComponents}
+            <Editor />
         </div>
     )
 }

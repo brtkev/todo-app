@@ -35,8 +35,8 @@
 .button{
     color: #eee;
     outline: none;
+    border: none;
     background: var(--backgroundColor);
-    border: 1px solid #444;
 
     border-radius: 10px;
     width: calc(1.5rem + 1vw);

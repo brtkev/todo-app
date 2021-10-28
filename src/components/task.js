@@ -38,10 +38,10 @@ export default function Task(props) {
     );
 };
 
-const TaskButton = (props) => {
-    const {src, alt} = props 
+export function TaskButton (props) {
+    const {src, alt, className} = props 
     return(
-        <button className={styles.button} {...props} >
+        <button {...props} className={`${styles.button} ${className}`}  >
             <img src={src} alt={alt} />
         </button>
     );
