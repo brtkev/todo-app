@@ -47,9 +47,9 @@
     outline: none;
     color: #eee;
     border-radius: 5px;
-    padding: calc(.5vw + .5rem) .5vw;
     font-size: calc(.5vw + .5rem);
     background-color: var(--backgroundColor);
+    padding: calc(.5vw + .5rem) .5vw;
     margin-bottom: 2vw;
 }
 
@@ -65,7 +65,13 @@
     resize: none;
 }
 
-.form input[type="button"]{
+.form button{
+    border: none;
+    outline: none;
+    color: #eee;
+    border-radius: 5px;
+    font-size: calc(.5vw + .5rem);
+    background-color: var(--backgroundColor);
     width: min-content;
     align-self: center;
     padding: calc(.5vw + .5rem) 5vw;
