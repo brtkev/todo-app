@@ -3,7 +3,7 @@ import { cancel } from './images';
 import { TaskButton } from './task';
 
 export default function Editor(props) {
-    
+    const { close } = props;
     return(
         <div className={styles.windowContainer} >
             <div className={styles.container} >
@@ -15,8 +15,7 @@ export default function Editor(props) {
                     <textarea name="description" cols="30" rows="5" placeholder="add an optional description" ></textarea>
                     <input type="button" value="Add" onClick={()=> console.log("asdas")} />
                 </form>
-                <TaskButton src={cancel} alt="X icon" className={styles.close} />
-                {/* <button className={styles.close} ><img src={cancel} alt="x icon" /></button> */}
+                <TaskButton src={cancel} alt="X icon" className={styles.close} onClick={close} />
             </div>
             
         </div>

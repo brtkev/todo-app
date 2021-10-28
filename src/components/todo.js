@@ -14,6 +14,7 @@ let example = [
 
 export default function Todo(){
     const [tasks, setTasks] = useState([]);
+    const [editorActive, setEditorActive] = useState(false);
     useEffect(() => {
         setTasks(fetchTasks());
     }, [])
@@ -38,11 +39,15 @@ export default function Todo(){
         return <Task index={i} key={item._id} {...item} onDelete={deleteTask} onEdit={editTask} />
     })
 
+    const toggleEditor = () => {
+        setEditorActive(prevState => !prevState);
+    }
+
 
     return(
         <div className={styles.container}>
             {taskComponents}
-            <Editor />
+            {editorActive ? <Editor /> : undefined}
         </div>
     )
 }
